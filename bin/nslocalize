@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+
+require 'trollop'
+require 'nslocalize'
+
+options = Trollop::options do
+  version "NSLocalize 0.0.0 (c) 2013 Gabriel Rinaldi"
+  banner <<-EOS
+    Manage and localize strings with easy on iOS.
+
+    Usage:
+      nslocalize [options] <path>
+      where [options] are:
+  EOS
+
+  opt :type,    'Choose between project or file (project by default)',  :default => 'project'
+end
+
+Trollop::die :type, 'is not valid' unless [ 'file', 'project' ].include? options[:type] if options[:type]
+Trollop::die 'path is required' if ARGV.empty?
+Trollop::die 'path must be a file' unless File.exist?(ARGV[0]) && !File.directory?(ARGV[0]) if options[:type] == 'file'
+Trollop::die 'path must be a directory' unless File.exist?(ARGV[0]) || File.directory?(ARGV[0]) if options[:type] == 'project'
+
+path = File.absolute_path(File.new(ARGV[0]))
+
+if options[:type] == 'project'
+  puts NSLocalize::Parse.project(path)
+else
+  puts NSLocalize::Export.apple(NSLocalize::Parse.file(path))
+end

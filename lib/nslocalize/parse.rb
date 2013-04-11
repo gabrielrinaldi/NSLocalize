@@ -72,7 +72,7 @@ module NSLocalize
 
         filename = directory + '/' + filename
         if File.directory? filename
-          self.project(File.absolute_path filename) do |file|
+          self.recursive_list(File.absolute_path filename) do |file|
             yield file
           end
         else

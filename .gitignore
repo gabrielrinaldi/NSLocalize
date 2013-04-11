@@ -1,3 +1,16 @@
+# rcov generated
+coverage
+coverage.data
+
+# rdoc generated
+rdoc
+
+# yard generated
+doc
 .yardoc
-NSLocalize.sublime-project
-nslocalize-*.gem
+
+# bundler
+.bundle
+
+# jeweler generated
+pkg

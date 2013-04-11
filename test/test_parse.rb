@@ -3,7 +3,7 @@ require 'helper'
 class NSLocalizeParseTest < Test::Unit::TestCase
   context "a project" do
     setup do
-      @project = NSLocalize::Parse.project('test/')
+      @project = NSLocalize::Parse.project(File.absolute_path(File.new('test/')))
     end
 
     should "be an Array" do

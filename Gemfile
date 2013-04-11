@@ -7,5 +7,5 @@ group :development do
   gem 'rdoc', '~> 4.0.1'
   gem 'bundler', '~> 1.3.4'
   gem 'jeweler', '~> 1.8.4'
-  gem 'rcov', '~> 0.9.11'
+  gem 'simplecov', '~> 0.7.1'
 end

@@ -10,7 +10,12 @@ rescue Bundler::BundlerError => e
 end
 
 require 'simplecov'
-SimpleCov.start
+SimpleCov.start do
+  add_filter '/test/'
+
+  add_group 'Binaries', '/bin/'
+  add_group 'Libraries', '/lib/'
+end
 
 require 'test/unit'
 require 'shoulda'

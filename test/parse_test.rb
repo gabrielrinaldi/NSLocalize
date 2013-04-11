@@ -2,7 +2,7 @@ require 'turn'
 require 'test/unit'
 require 'nslocalize'
 
-class NSLocalizeTest < Test::Unit::TestCase
+class NSLocalizeParseTest < Test::Unit::TestCase
   def test_parse
     results = NSLocalize::Parse.content("UIAlertView showWithTitle:NSLocalizedString(@\"Oops...\", @\"Welcome view\") message:nil")
 
